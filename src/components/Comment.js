@@ -1,10 +1,14 @@
 import React from 'react';
 import './Comment.css';
 
-const Comment = () => (
+//stateless component
+const Comment = props =>
     <div className="Comment">
-        <h1>Hello! I'm a component.</h1>
+        <h2>{props.name}</h2>
+        <p>{props.email}</p>
+        <p>{props.children}</p>
+        <p>{props.date.toString()}</p>
     </div>
-)
+
 
 export default Comment
