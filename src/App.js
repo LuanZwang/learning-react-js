@@ -21,27 +21,30 @@ class App extends Component {
         date: new Date(2021, 9, 4),
         message: 'Hello! I\'m fine. How about you?'
       },
-    ]
+    ],
+    newComment: {
+      name: '',
+      email: '',
+      message: ''
+    }
   }
 
-  addComment = () => {
-    console.log('adding comment')
+  addComment = event => {
+
+    event.preventDefault()
     
-    const newComment = {
-      name: 'Maria',
-      email: 'mary@mail.com',
-      date: new Date(),
-      message: 'Helooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'
-    }
-
-    // let list = this.state.comments
-    // list.push(newComment)
-
-    // this.setState({comments: list})
+    const newComment = { ...this.state.newComment, date: new Date() }
 
     this.setState({
-      comments: [...this.state.comments, newComment]
+      comments: [...this.state.comments, newComment],
+      newComment: { name: '', email: '', message: ''}
     })
+  }
+
+  contentTyping = event => {
+    const { name, value } = event.target
+
+    this.setState({ newComment: { ...this.state.newComment, [name]: value } })
   }
 
   render() {
@@ -56,10 +59,39 @@ class App extends Component {
             email={comment.email}
             date={comment.date}>
             {comment.message}
-        </Comment>
+          </Comment>
         ))}
 
-        <button onClick={this.addComment} >Add comment</button>
+        <form method="post" onSubmit={this.addComment}>
+          <h2>Add comment</h2>
+
+          <div>
+            <input
+              type="text"
+              name="name"
+              value={this.state.newComment.name}
+              onChange={this.contentTyping}
+              placeholder="Type your name"></input>
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              value={this.state.newComment.email}
+              onChange={this.contentTyping}
+              placeholder="Type your e-mail"></input>
+          </div>
+          <div>
+            <textarea
+              name="message"
+              rows="4"
+              value={this.state.newComment.message}
+              onChange={this.contentTyping}
+              placeholder="Type your message"></textarea>
+          </div>
+
+          <button type="submit">Add comment</button>
+        </form>
       </div>
     );
   }
