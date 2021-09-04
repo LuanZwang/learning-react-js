@@ -11,14 +11,14 @@ class App extends Component {
         id: 0,
         name: 'Jão',
         email: 'joao@mail.com',
-        date: new Date(2021, 9, 4),
+        date: new Date(2021, 5, 4, 17, 30, 0),
         message: 'Hi! How are you?'
       },
       {
         id: 1,
         name: 'Maria',
         email: 'Mary@mail.com',
-        date: new Date(2021, 9, 4),
+        date: new Date(2021, 5, 4, 12, 15, 0),
         message: 'Hello! I\'m fine. How about you?'
       },
     ],
@@ -71,7 +71,7 @@ class App extends Component {
         ))}
 
         <form method="post" onSubmit={this.addComment} className="New-Comment">
-          
+
           <h2>Add comment</h2>
 
           <div>
