@@ -41,6 +41,13 @@ class App extends Component {
     })
   }
 
+  removeComment = comment => {
+    let list = this.state.comments
+    list = list.filter(x => x !== comment)
+
+    this.setState({ comments: list })
+  }
+
   contentTyping = event => {
     const { name, value } = event.target
 
@@ -57,7 +64,8 @@ class App extends Component {
             key={index} //or key={comment.id}
             name={comment.name}
             email={comment.email}
-            date={comment.date}>
+            date={comment.date}
+            onRemove={this.removeComment.bind(this, comment)}>
             {comment.message}
           </Comment>
         ))}
