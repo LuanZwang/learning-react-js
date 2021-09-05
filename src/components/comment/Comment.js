@@ -1,7 +1,7 @@
 import React from 'react';
 import './Comment.css';
 import { formatRelative } from 'date-fns';
-import userImage from '../images/user.png'
+import userImage from '../../images/user.png'
 import { ptBR } from 'date-fns/locale'
 
 //stateless component

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Comment from './components/Comment';
+import Comment from './components/comment/Comment';
 
 //statefull component
 class App extends Component {
